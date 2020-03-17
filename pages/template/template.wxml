@@ -1,0 +1,24 @@
+<!-- 隐藏 -->
+<template name="hide"></template>
+
+<!-- 顶部加载提示 -->
+<template name="topLoading">
+  <view class="alert_load">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{msg}}</view>
+  </view>
+</template>
+
+<!-- 顶部错误提示 -->
+<template name="error">
+  <view class="alert_load error">
+    <view class="weui-loadmore__tips">{{msg}}</view>
+  </view>
+</template>
+
+<!-- 顶部成功提示 -->
+<template name="success">
+  <view class="alert_load success">
+    <view class="weui-loadmore__tips">{{msg}}</view>
+  </view>
+</template>

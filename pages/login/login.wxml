@@ -1,0 +1,38 @@
+<import src="../template/template.wxml" />
+<template is="{{alert}}" data="{{msg:alertMsg}}"/>
+<view class="container" style="background-image: url('../../style/image/bg_login.jpg');background-size: auto 100%;background-position: center;">
+  <view class="login_wrap">
+    <image class="headImg" src="../../style/image/icon_logo.png"></image>
+
+    <!-- 选择登录方式 -->
+    <view wx:if="{{loginWay=='choose'}}" class="login_way">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="btn btn1">微信一键登录</button>
+      <button bindtap="loginWay" data-type="phone" class="btn btn1">手机号登录</button>
+    </view>
+
+    <!-- 手机号登录 -->
+    <view wx:if="{{loginWay=='phone'}}" class="login_info">
+      <view bindtap="loginWay" data-type="choose" class="rtn_way">
+        <image class="rtn_img" src="../../style/image/icon_arrow_left.png"></image>
+        <text>切换登录方式</text>
+      </view>
+      <view class="user_wrap">
+        <image class="inpImg" src="../../style/image/icon-user.png"></image>
+        <input data-type="userName" placeholder="请输入手机号" bindinput="bindData" type="text"></input>
+      </view>
+      <view class="user_wrap">
+        <image class="inpImg" src="../../style/image/icon_lock.png"></image>
+        <input data-type="pwd" placeholder="请输入密码" bindinput="bindData" type="{{showPwd==true?'text':'password'}}"></input>
+        <image bindtap="showPwd" class="showPwd" src="../../style/image/icon_show_{{showPwd==true?'on':'off'}}.png"></image>
+      </view>
+      <button bindtap="login" class="btn">登录</button>
+      <view class="forgetPwd">
+        <navigator>忘记密码</navigator>
+      </view>
+      <view class="regist">
+        <text>没有账号？</text>
+        <navigator url="">注册</navigator>
+      </view>
+    </view>
+  </view>
+</view>

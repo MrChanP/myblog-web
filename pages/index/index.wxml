@@ -1,0 +1,5 @@
+<import src="../template/template.wxml"/>
+<template is="{{alert}}" data="{{msg:alertMsg}}"/>
+<view class="container">
+
+</view>

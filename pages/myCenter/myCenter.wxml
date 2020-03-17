@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="user_wrap">
+    <image bindtap="checkLogin" class="head_img" src="{{userInfo==null?'../../style/image/icon_login_out.png':userInfo.head_img}}"></image>
+    <view wx:if="{{userInfo!=null}}" class="user_info">
+      <text class="user_nickName">{{userInfo.name}}</text>
+      <text class="user_sign">{{userInfo.sign}}</text>
+    </view>
+    <view bindtap="checkLogin" wx:if="{{userInfo==null}}" class="to_login">
+      <text>登录/注册</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+  </view>
+  <view class="body_wrap">
+    <view class="li">
+      <text>我的博客</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+    <view class="li">
+      <text>我的博客</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+    <view class="li">
+      <text>我的博客</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+    <view class="li">
+      <text>我的博客</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+    <view class="li set">
+      <text>设置</text>
+      <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+    </view>
+  </view>
+</view>
