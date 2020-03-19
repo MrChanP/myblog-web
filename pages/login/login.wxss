@@ -1,3 +1,5 @@
+@import "../template/template.wxss";
+
 .container {
   /* background-image: url("http://attachments.gfan.com/forum/201503/19/065748i5xpdhkdghez7hgp.jpg");
   background-size: auto 100%;
@@ -80,27 +82,6 @@
   margin-top: 20rpx;
   display: flex;
   justify-content: flex-end;
-}
-
-/* 操作提示 */
-.alert_load {
-  width: 94%;
-  border-radius: 10rpx;
-  margin: 10rpx 3%;
-  line-height: 70rpx;
-  font-size: 25rpx;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-}
-.error {
-  background-color: rgba(255, 0, 0, 0.6);
-}
-.success {
-  background-color: rgba(0, 255, 0, 0.6);
 }
 
 /* 授权弹窗 */

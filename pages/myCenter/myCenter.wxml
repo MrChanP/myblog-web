@@ -1,3 +1,5 @@
+<import src="../template/template.wxml" />
+<template is="{{alert}}" data="{{msg:alertMsg}}"/>
 <view class="container">
   <view class="user_wrap">
     <image bindtap="checkLogin" class="head_img" src="{{userInfo==null?'../../style/image/icon_login_out.png':userInfo.head_img}}"></image>

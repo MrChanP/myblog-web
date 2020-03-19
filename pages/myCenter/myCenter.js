@@ -13,7 +13,7 @@ Page({
   checkLogin() {
     let url = ""
     if(this.data.userInfo != null){
-      url = "../login/login"
+      url = "../index/index"
     } else {
       url = "../login/login"
     }
@@ -21,57 +21,32 @@ Page({
       url: url
     })
   },
-
-  //登录获取令牌
-  getSessionId(){
-    wx.login({
-      success(res) {
-        if (res.code) {
-          wx.request({
-            url: 'http://localhost:8080/myblog/index/onLogin',
-            data: { code: res.code },
-            success(res) {
-              if (res.code == "0") {
-                wx.setStorage({
-                  key: 'sessionId',
-                  data: res.data,
-                })
-              } else {
-                that.setData({
-                  alert: "error", alertMsg: res.msg
-                })
-              }
-            }
-          })
-        }
-      }
-    })
+  
+  //提示弹窗，2秒后消失
+  alertTip(alert, alertMsg) {
+    this.setData({ alert: alert, alertMsg: alertMsg })
+    let that = this
+    setTimeout(function () {
+      that.setData({ alert: "hide", alertMsg: "" })
+    }, 2000)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    // wx.setStorage({
-    //   key: 'userInfo',
-    //   data: { "head_img": "../../style/image/head_img.jpg", "name": "玉兰", "sign": "我是一只小可爱" },
-    // })
-    wx.checkSession({
-      success() {
-        let sessionId
-        wx.getStorage({
-          key: 'sessionId',
-          success(res) {
-            console.log(res)
-          },
-          fail(){
-            console.log("fff")
-          }
-        })
+    this.setData({ alert: "topLoading", alertMsg: "正在加载数据"})
+    let that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function(res) {
+        that.setData({ userInfo:res.data})
       },
-      fail() {
-        this.getSessionId()
+      fail(){
+        console.log("缓存获取用户信息失败")
+      },
+      complete(){
+        that.setData({ alert: "hide"})
       }
     })
   },
