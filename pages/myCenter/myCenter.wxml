@@ -1,11 +1,11 @@
-<import src="../template/template.wxml" />
-<template is="{{alert}}" data="{{msg:alertMsg}}"/>
+<mp-toptips msg="{{toptips.msg}}" type="{{toptips.type}}" show="{{toptips.show}}" delay="{{toptips.time}}"></mp-toptips>
+<mp-loading show="{{loading.show}}" tips="{{loading.msg}}" animated="true" type="circle"></mp-loading>
 <view class="container">
   <view class="user_wrap">
-    <image bindtap="checkLogin" class="head_img" src="{{userInfo==null?'../../style/image/icon_login_out.png':userInfo.head_img}}"></image>
+    <image bindtap="checkLogin" class="head_img" src="{{userInfo==null?'../../style/image/icon_login_out.png':userInfo.wxHead}}"></image>
     <view wx:if="{{userInfo!=null}}" class="user_info">
-      <text class="user_nickName">{{userInfo.name}}</text>
-      <text class="user_sign">{{userInfo.sign}}</text>
+      <text class="user_nickName">{{userInfo.wxNickname}}</text>
+      <text class="user_sign">{{userInfo.sign==null?'这个人很懒，什么也没有留下！':userInfo.sign}}</text>
     </view>
     <view bindtap="checkLogin" wx:if="{{userInfo==null}}" class="to_login">
       <text>登录/注册</text>

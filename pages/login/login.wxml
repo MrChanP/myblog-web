@@ -1,5 +1,4 @@
-<import src="../template/template.wxml" />
-<template is="{{alert}}" data="{{msg:alertMsg}}"/>
+<mp-toptips msg="{{toptips.msg}}" type="{{toptips.type}}" show="{{toptips.show}}" delay="{{toptips.time}}"></mp-toptips>
 <view class="container" style="background-image: url('../../style/image/bg_login.jpg');background-size: auto 100%;background-position: center;">
   <view class="login_wrap">
     <image class="headImg" src="../../style/image/icon_logo.png"></image>

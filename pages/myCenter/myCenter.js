@@ -6,14 +6,14 @@ Page({
    */
   data: {
     userInfo: null,
-    alert: "hide",
-    alertMsg: ""
+    toptips: { show: false, type: '', msg: '', time: 0 },
+    loading: { show: false, msg: ''}
   },
 
   checkLogin() {
     let url = ""
     if(this.data.userInfo != null){
-      url = "../index/index"
+      url = "../myCenter/userInfo"
     } else {
       url = "../login/login"
     }
@@ -21,32 +21,42 @@ Page({
       url: url
     })
   },
-  
-  //提示弹窗，2秒后消失
-  alertTip(alert, alertMsg) {
-    this.setData({ alert: alert, alertMsg: alertMsg })
-    let that = this
-    setTimeout(function () {
-      that.setData({ alert: "hide", alertMsg: "" })
-    }, 2000)
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ alert: "topLoading", alertMsg: "正在加载数据"})
+    this.setData({ loading: { show: true, msg: '正在加载数据，请稍后' }})
     let that = this;
     wx.getStorage({
       key: 'userInfo',
-      success: function(res) {
-        that.setData({ userInfo:res.data})
+      success: function (res) {
+        that.setData({ userInfo: res.data, loading: { show: false } })
       },
-      fail(){
+      fail() {
         console.log("缓存获取用户信息失败")
-      },
-      complete(){
-        that.setData({ alert: "hide"})
+        wx.getStorage({
+          key: 'sessionId',
+          success: function (res) {
+            //通过seesionId获取用户信息
+            wx.request({
+              url: 'http://localhost:8080/myblog/index/getUserInfo',
+              data: { sessionId: res.data },
+              success(res) {
+                if (res.data.code == "0") {
+                  wx.setStorage({
+                    key: 'userInfo',
+                    data: res.data.data,
+                  })
+                  that.setData({ userInfo: res.data.data })
+                }
+              },
+              complete(){
+                that.setData({ loading: { show: false } })
+              }
+            })
+          },
+        })
       }
     })
   },
@@ -55,14 +65,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**

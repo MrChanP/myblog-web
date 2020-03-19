@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 确认提示框 -->
+  <mp-dialog title="提示" show="{{showDialog}}" bindbuttontap="loginOutDialog" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+    <view>确认退出吗？</view>
+  </mp-dialog>
+  <!-- 顶部提示 -->
+  <mp-toptips msg="{{toptips.msg}}" type="{{toptips.type}}" show="{{toptips.show}}" delay="{{toptips.time}}"></mp-toptips>
+
+  <!-- 账号信息 -->
+  <view class="info_wrap" wx:if="{{showWrap=='info'}}">
+    <view class="info_detail">
+      <text class="info_title">头像</text>
+      <image class="headImg" src="{{userInfo.wxHead}}"></image>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">用户名</text>
+      <text class="info_username">{{userInfo.wxNickname}}</text>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">ID</text>
+      <text class="info_username">{{userInfo.id}}</text>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">登录密码</text>
+      <view class="info_arrow_right" bindtap="resetPwd">
+        <text>设置</text>
+        <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+      </view>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">性别</text>
+      <text class="info_gender">{{userInfo.gender==1?'男':'女'}}</text>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">手机号</text>
+      <text class="info_phone">{{userInfo.userPhone}}</text>
+    </view>
+    <view class="info_detail">
+      <text class="info_title">绑定微信</text>
+      <view class="info_arrow_right bindWx">
+        <text>已绑定</text>
+        <image class="arrow_right" src="../../style/image/icon_arrow_right.png"></image>
+      </view>
+    </view>
+    <button bindtap="loginOut" class="exit_wrap">退出登陆</button>
+  </view>
+
+  <!-- 重置密码 -->
+  <view class="resetPwd" wx:if="{{showWrap=='resetPwd'}}">
+    <form bindsubmit="setPwdSbt">
+      <input password name="oldPwd" maxlength="20" placeholder="请输入旧密码，没有则输入要设置的新密码"></input>
+      <input password name="newPwd" maxlength="20" placeholder="请确认密码"></input>
+      <view class="btn_wrap">
+        <button type="default" bindtap="cancelReset">取消</button>
+        <button type="primary" form-type="submit">确定</button>
+      </view>
+    </form>
+  </view>
+
+</view>

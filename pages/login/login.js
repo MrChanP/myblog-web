@@ -7,11 +7,10 @@ Page({
       userName: null,
       pwd: null,
       showPwd: false,
-      alert: "hide",
-      alertMsg: "",
       sub: true,
       loginWay: "choose",
-      sessionId: 0
+      sessionId: 0,
+      toptips: { show: false, type: '', msg: '', time:0 }
   },
 
 //微信一键登录
@@ -31,7 +30,7 @@ Page({
               url: '/pages/myCenter/myCenter'
             })
           } else {
-            that.alertTip("error", "登陆失败")
+            that.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 }})
           }
         }
       })
@@ -95,11 +94,11 @@ Page({
       return
     }
     if (this.data.userName == null || this.data.userName == "") {
-      this.alertTip("error", "请输入您的登录账号")
+      this.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 } })
     } else if (this.data.pwd == null || this.data.pwd == "") {
-      this.alertTip("error", "请输入您的登录密码")
+      this.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 }})
     } else {
-      this.setData({ alert: 'topLoading', alertMsg: '正在登陆，请稍后', sub: false })
+      this.setData({ toptips: { show: true, type: 'info', msg: '正在登陆，请稍后', time: 0 }, sub: false })
       let that = this
       wx.request({
         url: 'http://localhost:8080/myblog/index/login',
@@ -109,7 +108,7 @@ Page({
         dataType: "json",
         success(res) {
           if (res.data.code == 0) {
-            that.setData({ alert: 'success', alertMsg: '登录成功' })
+            that.setData({ toptips: { show: true, type: 'success', msg: '登陆成功', time: 0 }})
             setTimeout(function () {
               wx.switchTab({
                 url: '/pages/myCenter/myCenter'
@@ -117,7 +116,7 @@ Page({
             }, 1500)
           } else {
             that.setData({ sub: true })
-            that.alertTip("error", res.data.msg)
+            that.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 } })
           }
         }
       })
@@ -136,15 +135,6 @@ Page({
     this.setData({
         [e.currentTarget.dataset.type]: e.detail.value
     })
-  },
-
-  //提示弹窗，2秒后消失
-  alertTip(alert, alertMsg) {
-    this.setData({ alert: alert, alertMsg: alertMsg })
-    let that = this
-    setTimeout(function () {
-      that.setData({ alert: "hide", alertMsg: "" })
-    }, 2000)
   },
 
   /**

@@ -1,0 +1,64 @@
+.info_wrap, .resetPwd {
+  background-color: #fff;
+  margin: 50rpx 20rpx;
+  border-radius: 10rpx;
+}
+.info_detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #666;
+  line-height: 45rpx;
+  padding: 20rpx 40rpx;
+}
+.info_title {
+  color: #999;
+}
+.headImg {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 50%;
+}
+.info_arrow_right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.arrow_right {
+  height: 45rpx;
+  width: 45rpx;
+}
+.exit_wrap {
+  position: absolute;
+  bottom: 50rpx;
+  left: 15%;
+  width: 70%;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background-color: #333;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 80rpx;
+}
+.resetPwd input {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #999;
+  font-size: 30rpx;
+  padding-left: 10%;
+}
+.btn_wrap {
+  margin-top: 40rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+}
+.btn_wrap button {
+  width: 33%;
+  height: 80rpx;
+}

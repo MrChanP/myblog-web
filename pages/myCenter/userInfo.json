@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-form": "../../miniprogram_npm/weui-miniprogram/cell/cell"
+  },
+  "navigationBarTitleText": "账号与安全"
+}

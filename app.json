@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/myCenter/myCenter",
-    "pages/login/login",
+    "pages/myCenter/userInfo",
     "pages/index/index",
-    "pages/template/template"
+    "pages/template/template",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +31,10 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap95.json"
+  "sitemapLocation": "sitemap95.json",
+  "usingComponents": {
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips",
+    "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading"
+  }
 }

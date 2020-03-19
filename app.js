@@ -7,15 +7,13 @@ App({
     let that = this;
     wx.checkSession({
       success() {
-        console.log("checkSession:success")
         wx.getStorage({
           key: 'sessionId',
           success(res) {
-            console.log("getStorage:success")
-            that.getUserInfo(res.data)
+            console.log("getSessionId:success")
           },
           fail() {
-            console.log("getStorage:fail")
+            console.log("getSessionId:fail")
             that.getSessionId()
           }
         })
@@ -40,28 +38,10 @@ App({
               if (res.data.code == "0") {
                 wx.setStorage({
                   key: 'sessionId',
-                  data: res.data.data,
+                  data: res.data.data
                 })
-                that.getUserInfo(res.data.data)
               }
             }
-          })
-        }
-      }
-    })
-  },
-
-  //通过seesionId获取用户信息
-  getUserInfo(sessionId) {
-    wx.request({
-      url: 'http://localhost:8080/myblog/index/getUserInfo',
-      data: { sessionId: sessionId },
-      success(res) {
-        console.log(res.data)
-        if (res.data.code == "0") {
-          wx.setStorage({
-            key: 'userInfo',
-            data: res.data.data,
           })
         }
       }
