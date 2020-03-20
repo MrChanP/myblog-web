@@ -24,7 +24,7 @@
         <input data-type="pwd" placeholder="请输入密码" bindinput="bindData" type="{{showPwd==true?'text':'password'}}"></input>
         <image bindtap="showPwd" class="showPwd" src="../../style/image/icon_show_{{showPwd==true?'on':'off'}}.png"></image>
       </view>
-      <button bindtap="login" class="btn">登录</button>
+      <button bindtap="loginByPwd" class="btn">登录</button>
       <view class="forgetPwd">
         <navigator>忘记密码</navigator>
       </view>

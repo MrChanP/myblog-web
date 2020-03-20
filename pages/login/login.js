@@ -9,21 +9,19 @@ Page({
       showPwd: false,
       sub: true,
       loginWay: "choose",
-      sessionId: 0,
       toptips: { show: false, type: '', msg: '', time:0 }
   },
 
 //微信一键登录
   getUserInfo(e) {
-    let sessionId = this.data.sessionId
     let that = this
     if(e.detail.userInfo){
       //允许授权
+      let sessionId = wx.getStorageSync(sessionId)
       wx.request({
         url: 'http://localhost:8080/myblog/index/saveUserInfo',
-        data: { sessionId:sessionId, userInfo:e.detail.userInfo},
+        data: { sessionId: sessionId, userInfo:e.detail.userInfo},
         success(res) {
-          console.log(res.data)
           if (res.data.code == "0") {
             wx.setStorageSync('userInfo', res.data.data)
             wx.switchTab({
@@ -58,8 +56,8 @@ Page({
   },
 
   //微信一键登录
-  getphonenumber() {
-    console.log("微信一键登录getphonenumber")
+  // getphonenumber() {
+  //   console.log("微信一键登录getphonenumber")
     // wx.login({
     //   success(res) {
     //     if (res.code) {
@@ -81,42 +79,42 @@ Page({
     //     }
     //   }
     // })
-  },
+  // },
 
   //选择手机号登录
   loginWay(e){
     this.setData({ loginWay: e.currentTarget.dataset.type })
   },
 
-  //登录校验
-  login() {
+  //账号密码登录
+  loginByPwd() {
     if (!this.data.sub) {
       return
     }
-    if (this.data.userName == null || this.data.userName == "") {
-      this.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 } })
-    } else if (this.data.pwd == null || this.data.pwd == "") {
-      this.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 }})
+    userName = this.data.userName
+    pwd = this.data.pwd
+    if (userName == null || userName == "") {
+      this.setData({ toptips: { show: true, type: 'error', msg: '请输入用户名', time: 1500 } })
+    } else if (pwd == null || pwd == "") {
+      this.setData({ toptips: { show: true, type: 'error', msg: '请输入密码', time: 1500 }})
     } else {
       this.setData({ toptips: { show: true, type: 'info', msg: '正在登陆，请稍后', time: 0 }, sub: false })
       let that = this
       wx.request({
-        url: 'http://localhost:8080/myblog/index/login',
+        url: 'http://localhost:8080/myblog/index/loginByPwd',
         method: 'POST',
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         data: { 'userName': that.data.userName, 'pwd': that.data.pwd },
-        dataType: "json",
         success(res) {
           if (res.data.code == 0) {
-            that.setData({ toptips: { show: true, type: 'success', msg: '登陆成功', time: 0 }})
+            that.setData({ toptips: { show: true, type: 'success', msg: '登陆成功', time: 1500 }})
             setTimeout(function () {
               wx.switchTab({
                 url: '/pages/myCenter/myCenter'
               })
             }, 1500)
           } else {
-            that.setData({ sub: true })
-            that.setData({ toptips: { show: true, type: 'error', msg: '登陆失败', time: 2000 } })
+            that.setData({ sub: true, toptips: { show: true, type: 'error', msg: res.data.msg, time: 1500 }})
           }
         }
       })
@@ -141,13 +139,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    wx.getStorage({
-      key: 'sessionId',
-      success: function(res) {
-        that.setData({ sessionId:res.data})
-      },
-    })
+    // let that = this
+    // wx.getStorage({
+    //   key: 'sessionId',
+    //   success: function(res) {
+    //     that.setData({ sessionId:res.data})
+    //   },
+    // })
   },
 
   /**
