@@ -1,0 +1,71 @@
+<!-- 隐藏 -->
+<template name="hide"></template>
+
+<!-- 登陆加载提示 -->
+<template name="loading_login">
+  <view class="no_click_wrap"></view>
+  <view class="option_wrap">
+    <view class="loading_circle"></view>
+    <view>{{msg}}</view>
+  </view>
+</template>
+
+<!-- 加载中提示 -->
+<template name="loading">
+  <view class="no_click_wrap bgcb0"></view>
+  <view class="loading_wrap">
+    <view class="loading_body">
+      <view class="loadEffect">
+          <view wx:for="{{8}}"></view>
+      </view>
+      <view>{{msg}}</view>
+    </view>
+  </view>
+</template>
+
+<!-- 提示弹窗 -->
+<template name="toast">
+  <view class="no_click_wrap bg_fade_show"></view>
+  <view class="toast_wrap">
+    <view class="toast_title">提示</view>
+    <view class="toast_msg">{{msg}}</view>
+    <view class="toast_btn">
+      <view bindtap="confirmResult">确定</view>
+    </view>
+  </view>
+</template>
+
+<!-- 确认弹窗 -->
+<template name="confirm">
+  <view class="no_click_wrap bg_fade_show"></view>
+  <view class="confirm_wrap">
+    <view class="confirm_msg">{{msg}}</view>
+    <view class="confirm_btn">
+      <view bindtap="confirmResult" data-type="{{false}}">取消</view>
+      <view bindtap="confirmResult" data-type="{{true}}">确定</view>
+    </view>
+  </view>
+</template>
+
+<!-- 操作提示 -->
+<template name="tip">
+  <view class="option_wrap">
+    <view class="tip_wrap">{{msg}}</view>
+  </view>
+</template>
+
+
+<!-- 错误提示 -->
+<template name="error">
+  <view class="option_wrap error_wrap">
+    <view>{{msg}}</view>
+  </view>
+</template>
+
+<!-- 成功提示 -->
+<template name="success">
+  <view class="no_click_wrap"></view>
+  <view class="option_wrap success_wrap">
+    <view>{{msg}}</view>
+  </view>
+</template>

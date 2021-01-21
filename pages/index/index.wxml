@@ -1,0 +1,86 @@
+<import src="../template/template.wxml"/>
+<template is="{{alertType}}" data="{{msg:alertMsg}}"/>
+<view class="container">
+  <text class="nav_top" style="{{navTopStyle}}">{{nowTabar=='index'?'首页':nowTabar=='message'?'消息':'个人中心'}}</text>
+
+  <!-- 首页 -->
+  <view wx:if="{{nowTabar=='index'}}">
+   
+  </view>
+
+  <!-- 消息 -->
+  <view wx:if="{{nowTabar=='message'}}" class="message_wrap">
+    <scroll-view scroll-y="true">
+      <view bindtap="switchNoticToast" data-type="show" wx:for="{{5}}" wx:key="index" class="per_wrap">
+        <view class="per_head_wrap">
+          <view class="have_new"></view>
+          <image class="per_head_img" src="{{imgPath}}/head_img.jpg"></image>
+        </view>
+        <view class="per_info_wrap">
+          <view class="per_info_top">
+            <view class="per_name">{{index}}啊啊啊</view>
+            <view class="message_time">2018*12*51</view>
+          </view>
+          <view class="message_new">的的撒多</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 个人中心 -->
+  <view wx:if="{{nowTabar=='person'}}">
+    <view class="user_wrap" style="background: url('http://47.116.65.132/bgImg/myCenter_user_wrap_bg.png') no-repeat;background-size: 100% 100%;">
+      <image bindtap="{{userInfo==null?'toLogin':'toPersonInfo'}}" class="head_img" src="{{userInfo.headUrl==null?(imgPath + '/icon_login_out.png'):userInfo.headUrl}}"></image>
+      <view wx:if="{{userInfo!=null}}" class="user_info">
+        <text class="user_nickName">{{userInfo.userName}}</text>
+        <text class="user_sign">{{userInfo.sign==null?'这个人很懒，什么也没有留下！':userInfo.sign}}</text>
+      </view>
+      <view wx:if="{{userInfo==null}}" bindtap="toLogin" class="to_login">
+        <text>登录/注册</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+    </view>
+    <view class="body_wrap">
+      <view class="li" bindtap="toMyCV">
+        <text>我的简历</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+      <view class="li">
+        <text>我的日记</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+      <view class="li">
+        <text>待续</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+      <view class="li">
+        <text>待续</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+      <view class="li set">
+        <text>设置</text>
+        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 底部切换按钮 -->
+<view class="tabar_bottom_wrap">
+  <view bindtap="switchTabar" data-tabar="index">
+    <image class="tabar_img" src="{{imgPath}}/icon_index{{nowTabar=='index'?'_sel':''}}.png"></image>
+  </view>
+  <view bindtap="switchTabar" data-tabar="message">
+    <image class="tabar_img" src="{{imgPath}}/icon_message{{nowTabar=='message'?'_sel':''}}.png"></image>
+  </view>
+  <view bindtap="switchTabar" data-tabar="person">
+    <image class="tabar_img" src="{{imgPath}}/icon_grzx{{nowTabar=='person'?'_sel':''}}.png"></image>
+  </view>
+</view>
+
+
+<!-- 通知窗口 -->
+<view bindtap="switchNoticToast" data-type="hide" wx:if="{{showNoticToast}}" class="notic_wrap">
+  
+</view>

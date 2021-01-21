@@ -1,0 +1,197 @@
+.container {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #f5f5f5;
+  /* background: -moz-radial-gradient(#364D58,#000); */
+  /* background: -webkit-gradient(radial, center center,10,center center,1000, from(#364D58), to(#000)); */
+  /* background-color: #151f23; */
+}
+
+/* 顶部标题 */
+.nav_top {
+  color: #333;
+  height: 10%;
+}
+
+
+/* 首页 */
+
+
+
+
+
+/* 信息 */
+.message_wrap {
+  background-color: #fff;
+  padding: 0 5%;
+  height: 85%;
+}
+.message_wrap>scroll-view {
+  height: 100%;
+  padding-bottom: 110rpx;
+}
+.per_wrap {
+  margin-bottom: 10rpx;
+  padding-bottom: 8rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.per_head_wrap {
+  flex: 1;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.have_new {
+  position: absolute;
+  right: 10rpx;
+  top: 5rpx;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background-color: red;
+}
+.per_head_img {
+  width: 75rpx;
+  height: 75rpx;
+}
+.per_info_wrap {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 95rpx;
+}
+.per_info_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  font-size: 26rpx;
+  width: 100%;
+}
+.per_name {
+  max-width: 60%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.message_time {
+  color: #666;
+  font-size: 24rpx;
+}
+.message_new {
+  color: #666;
+  width: 500rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* 个人中心 */
+.user_wrap {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3% 0;
+  position: relative;
+  z-index: 1;
+}
+.head_img {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  margin: 40rpx 50rpx 40rpx 70rpx;
+}
+.user_info {
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+}
+.user_nickName {
+  margin: 10rpx 0;
+  font-size: 30rpx;
+  color: #333;
+}
+.user_sign {
+  font-size: 24rpx;
+  color: #666;
+}
+.to_login {
+  color: #515151;
+  display: flex;
+  align-items: center;
+}
+.arrow_right {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+.body_wrap {
+  width: 100%;
+  color: #333;
+}
+.body_wrap .li {
+  margin: 50rpx 30rpx 0 50rpx;
+  padding: 0 50rpx;
+  font-size: 33rpx;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  line-height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.set {
+  margin-top: 120rpx;
+}
+
+
+
+
+/* 底部菜单 */
+.tabar_bottom_wrap {
+  width: 100%;
+  height: 8%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 50;
+  background-color: #fff;
+}
+.tabar_bottom_wrap view {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tabar_img {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 通知窗口 */
+.notic_wrap {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  z-index: 51;
+  top: 0;
+  left: 0;
+}

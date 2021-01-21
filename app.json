@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/signUp/signUp",
+    "pages/login/login",
+    "pages/userInfo/userInfo",
+    "pages/myResume/myResume",
+
+    "pages/template/template"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap95.json",
+  "usingComponents": {
+    "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon"
+  }
+}

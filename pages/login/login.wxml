@@ -1,0 +1,40 @@
+<!-- <mp-toptips msg="{{toptips.msg}}" type="{{toptips.type}}" show="{{toptips.show}}" delay="{{toptips.time}}"></mp-toptips> -->
+<import src="../template/template.wxml"/>
+<template is="{{alertType}}" data="{{msg:alertMsg}}"/>
+<view class="container" style="background: url('{{imgPath}}/bg_login.jpg');background-size: auto 100%;background-position: center;">
+
+  <view class="nav_back" bindtap="back" style="{{navTopStyle}}"><mp-icon icon="back" color="black" size="{{14}}"></mp-icon></view>
+  <text class="nav_top" style="{{navTopStyle}}">登陆</text>
+
+  <view class="login_wrap">
+    <image class="headImg" src="{{imgPath}}/icon_logo.png"></image>
+
+    <!-- 选择登录方式 -->
+    <view wx:if="{{loginWay=='choose'}}" class="login_way">
+      <!-- <button open-type="getPhoneNumber" bindgetuserinfo="getPhoneNumber" class="btn btn1">微信一键登录</button> -->
+      <button bindtap="toSignUp"  class="btn btn1">注册</button>
+      <button bindtap="loginWay" data-type="phone" class="btn btn1">登录</button>
+    </view>
+
+    <!-- 手机号登录 -->
+    <view wx:if="{{loginWay=='phone'}}" class="login_info">
+      <view bindtap="loginWay" data-type="choose" class="rtn_way">
+        <image class="rtn_img" src="{{imgPath}}/icon_arrow_left.png"></image>
+        <text>切换登录方式</text>
+      </view>
+      <view class="user_wrap">
+        <image class="inpImg" src="{{imgPath}}/icon-user.png"></image>
+        <input data-type="userName" placeholder="请输入手机号" bindinput="bindData" maxlength="11" type="text"></input>
+      </view>
+      <view class="user_wrap">
+        <image class="inpImg" src="{{imgPath}}/icon_lock.png"></image>
+        <input data-type="pwd" placeholder="请输入密码" maxlength="20" bindinput="bindData" type="{{showPwd==true?'text':'password'}}"></input>
+        <image bindtap="showPwd" class="showPwd" src="{{imgPath}}/icon_show_{{showPwd==true?'on':'off'}}.png"></image>
+      </view>
+      <button bindtap="loginByPwd" class="btn">登录</button>
+      <view class="forgetPwd">
+        <navigator>忘记密码</navigator>
+      </view>
+    </view>
+  </view>
+</view>

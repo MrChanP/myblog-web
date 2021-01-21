@@ -1,0 +1,6 @@
+
+<view class="container">
+  <view class="nav_back" bindtap="back" style="{{navTopStyle}}"><mp-icon icon="back" color="black" size="{{14}}"></mp-icon></view>
+  <text class="nav_top" style="{{navTopStyle}}">简历</text>
+
+</view>

@@ -1,0 +1,67 @@
+<import src="../template/template.wxml"/>
+<template is="{{alertType}}" data="{{msg:alertMsg}}"/>
+<view class="container">
+  <image class="bg_img" src="{{imgPath}}/sign_up_bg.png"></image>
+  <view class="nav_back" bindtap="back" style="{{navTopStyle}}"><mp-icon icon="back" color="white" size="{{14}}"></mp-icon></view>
+  <text class="nav_top" style="{{navTopStyle}}">注册</text>
+
+  <scroll-view scroll-y="true">
+    <view class="info_wrap">
+      <view class="detail_wrap">
+        <view class="detail_title">注册方式</view>
+        <view class="way_wrap" bindtap="switchShowSelWay">
+            <view class="way_name">{{selectWay=='phone'?'手机号':selectWay=='mail'?'邮箱':'请选择'}}</view>
+            <image class="arrow_right" src="{{imgPath}}/icon_arrow_right_666.png"></image>
+          </view>
+      </view>
+
+      <view class="detail_wrap">
+        <view class="detail_title">登陆账号</view>
+        <view class="way_wrap"><input bindinput="bindInputData" placeholder-class="iptP" data-type="userName" value="{{userName}}" placeholder="请输入注册账号" type="text"></input></view>
+      </view>
+
+      <view class="detail_wrap">
+        <view class="detail_title">验证码</view>
+        <view class="way_wrap">
+          <input bindinput="bindInputData" placeholder-class="iptP" data-type="code" value="{{code}}" placeholder="验证码" maxlength="6" type="text"></input>
+          <view bindtap="sendCode" class="send_code">{{sendCodeAllow?'发送验证码':'重新发送('+sendCodeTime+')'}}</view>
+        </view>
+      </view>
+      
+      <view class="detail_wrap">
+        <view class="detail_title">登陆密码</view>
+        <view class="way_wrap"><input bindinput="bindInputData" placeholder-class="iptP" data-type="userPwd" value="{{userPwd}}" placeholder="请输入密码" type="password"></input></view>
+      </view>
+      
+      <view class="detail_wrap">
+        <view class="detail_title">确认密码</view>
+        <view class="way_wrap"><input bindinput="bindInputData" placeholder-class="iptP" data-type="userPwdAgain" value="{{userPwdAgain}}" placeholder="请再次输入密码" type="password"></input></view>
+      </view>
+      
+      <view class="detail_wrap">
+        <view class="detail_title check_wrap">
+          <view class="check_img_wrap" bindtap="switchAgree"><image wx:if="{{ifAgree}}" class="checked_img" src="{{imgPath}}/icon_select_bold.png"></image></view>
+          <view>请阅读并同意<text bindtap="" class="agree_text">《协议》</text></view>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+  <view bindtap="subSignUp" class="bottom_btn">提交</view>
+
+  <view bindtap="switchShowSelWay" class="sel_way_bg" wx:if="{{showSelWay}}"></view>
+  <view class="sel_way_wrap {{showSelWay?'show_sel_way_wrap':'hide_sel_way_wrap'}}">
+    <view class="way_all">
+      <view bindtap="selectWay" data-type="phone">
+        <view class="way_img_wrap"><image class="way_img" src="{{imgPath}}/icon_phone.png"></image></view>
+        <view class="way_name">手机号</view>
+      </view>
+      <view bindtap="selectWay" data-type="mail">
+        <view class="way_img_wrap"><image class="way_img" src="{{imgPath}}/icon_mail.png"></image></view>
+        <view class="way_name">邮箱</view>
+      </view>
+    </view>
+    <view bindtap="switchShowSelWay" class="cencel_sel">取消</view>
+  </view>
+</view>

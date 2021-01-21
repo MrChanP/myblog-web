@@ -1,0 +1,18 @@
+@import "pages/template/template.wxss";
+
+.nav_back {
+  position: fixed;
+  padding-left: 5%;
+  width: 50rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.nav_top {
+  width: 90%;
+  font-size: 36rpx;
+  padding: 0 5%;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
