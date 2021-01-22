@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgPath: "http://47.116.65.132:80/bgImg",
+    // imgPath: "http://47.116.65.132:80/bgImg",
+    imgPath: "http://localhost:80/bgImg",
     userInfo: null,
     nowWrap: 'info',
     alertType: 'hide',

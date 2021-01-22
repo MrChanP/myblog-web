@@ -29,7 +29,7 @@
 
   <!-- 个人中心 -->
   <view wx:if="{{nowTabar=='person'}}">
-    <view class="user_wrap" style="background: url('http://47.116.65.132/bgImg/myCenter_user_wrap_bg.png') no-repeat;background-size: 100% 100%;">
+    <view class="user_wrap" style="background: url({{imgPath}}/myCenter_user_wrap_bg.png) no-repeat;background-size: 100% 100%;">
       <image bindtap="{{userInfo==null?'toLogin':'toPersonInfo'}}" class="head_img" src="{{userInfo.headUrl==null?(imgPath + '/icon_login_out.png'):userInfo.headUrl}}"></image>
       <view wx:if="{{userInfo!=null}}" class="user_info">
         <text class="user_nickName">{{userInfo.userName}}</text>
