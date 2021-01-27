@@ -5,7 +5,25 @@
 
   <!-- 首页 -->
   <view wx:if="{{nowTabar=='index'}}">
-   
+    <view class="search_wrap {{ifSearchFocus?'search_focus':'search_blur'}}"> 
+      <image class="search_img" src="{{imgPath}}/bgImg/search.png"></image>
+      <input type="text" placeholder="查询信息" bindfocus="switchSearch" bindblur="switchSearch"/>
+    </view>
+   <!-- <view class="top_wrap">
+    <swiper indicator-dots="{{true}}" indicator-color="rgba(255, 255, 255, 0.7)" circular="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+      <swiper-item wx:for="{{topBg}}" wx:key="index">
+        <image mode="aspectFill" class="top_bg_img" src="{{item.src}}"></image>
+      </swiper-item>
+    </swiper>
+   </view> -->
+    <!-- <view class="center_wrap">
+      <scroll-view scroll-x="true" class="title_scroll">
+        <view wx:for="{{titleList}}" wx:key="index">{{item}}</view>
+        <view class="title_item title_item_actice">时事</view>
+        <view class="title_item">时事</view>
+        <view class="title_item">时事</view>
+      </scroll-view> -->
+    <!-- </view> -->
   </view>
 
   <!-- 消息 -->
@@ -14,7 +32,7 @@
       <view bindtap="switchNoticToast" data-type="show" wx:for="{{5}}" wx:key="index" class="per_wrap">
         <view class="per_head_wrap">
           <view class="have_new"></view>
-          <image class="per_head_img" src="{{imgPath}}/head_img.jpg"></image>
+          <image class="per_head_img" src="{{imgPath}}/bgImg/head_img.jpg"></image>
         </view>
         <view class="per_info_wrap">
           <view class="per_info_top">
@@ -29,37 +47,37 @@
 
   <!-- 个人中心 -->
   <view wx:if="{{nowTabar=='person'}}">
-    <view class="user_wrap" style="background: url({{imgPath}}/myCenter_user_wrap_bg.png) no-repeat;background-size: 100% 100%;">
-      <image bindtap="{{userInfo==null?'toLogin':'toPersonInfo'}}" class="head_img" src="{{userInfo.headUrl==null?(imgPath + '/icon_login_out.png'):userInfo.headUrl}}"></image>
+    <view class="user_wrap" style="background: url({{imgPath}}/bgImg/myCenter_user_wrap_bg.png) no-repeat;background-size: 100% 100%;">
+      <image bindtap="{{userInfo==null?'toLogin':'toPersonInfo'}}" class="head_img" src="{{userInfo.headUrl==null?(imgPath + '/bgImg/icon_login_out.png'):userInfo.headUrl}}"></image>
       <view wx:if="{{userInfo!=null}}" class="user_info">
         <text class="user_nickName">{{userInfo.userName}}</text>
         <text class="user_sign">{{userInfo.sign==null?'这个人很懒，什么也没有留下！':userInfo.sign}}</text>
       </view>
       <view wx:if="{{userInfo==null}}" bindtap="toLogin" class="to_login">
         <text>登录/注册</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
     </view>
     <view class="body_wrap">
       <view class="li" bindtap="toMyCV">
         <text>我的简历</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
       <view class="li">
         <text>我的日记</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
       <view class="li">
         <text>待续</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
       <view class="li">
         <text>待续</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
       <view class="li set">
         <text>设置</text>
-        <image class="arrow_right" src="{{imgPath}}/icon_arrow_right.png"></image>
+        <image class="arrow_right" src="{{imgPath}}/bgImg/icon_arrow_right.png"></image>
       </view>
     </view>
   </view>
@@ -69,13 +87,13 @@
 <!-- 底部切换按钮 -->
 <view class="tabar_bottom_wrap">
   <view bindtap="switchTabar" data-tabar="index">
-    <image class="tabar_img" src="{{imgPath}}/icon_index{{nowTabar=='index'?'_sel':''}}.png"></image>
+    <image class="tabar_img" src="{{imgPath}}/bgImg/icon_index{{nowTabar=='index'?'_sel':''}}.png"></image>
   </view>
   <view bindtap="switchTabar" data-tabar="message">
-    <image class="tabar_img" src="{{imgPath}}/icon_message{{nowTabar=='message'?'_sel':''}}.png"></image>
+    <image class="tabar_img" src="{{imgPath}}/bgImg/icon_message{{nowTabar=='message'?'_sel':''}}.png"></image>
   </view>
   <view bindtap="switchTabar" data-tabar="person">
-    <image class="tabar_img" src="{{imgPath}}/icon_grzx{{nowTabar=='person'?'_sel':''}}.png"></image>
+    <image class="tabar_img" src="{{imgPath}}/bgImg/icon_grzx{{nowTabar=='person'?'_sel':''}}.png"></image>
   </view>
 </view>
 

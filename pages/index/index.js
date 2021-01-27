@@ -7,11 +7,18 @@ Page({
      */
     data: {
       // imgPath: "http://47.116.65.132:80/bgImg",
-      imgPath: "http://localhost:80/bgImg",
+      imgPath: "http://localhost:80",
       nowTabar: "index",
       alertType: "hide",
       alertMsg: "",
-      showNoticToast: false
+      showNoticToast: false,
+      topBg: [{src:"http://localhost:80/bgImg/gg1.jpeg"}, {src:"http://localhost:80/bgImg/gg2.jpeg"}, {src:"http://localhost:80/bgImg/gg3.jpeg"}],
+      titleList: ["时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事"],
+      ifSearchFocus: false
+    },
+
+    switchSearch() {
+      this.setData({ ifSearchFocus: !this.data.ifSearchFocus })
     },
 
     test(e){
