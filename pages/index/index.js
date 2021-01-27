@@ -13,8 +13,31 @@ Page({
       alertMsg: "",
       showNoticToast: false,
       topBg: [{src:"http://localhost:80/bgImg/gg1.jpeg"}, {src:"http://localhost:80/bgImg/gg2.jpeg"}, {src:"http://localhost:80/bgImg/gg3.jpeg"}],
-      titleList: ["时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事", "时事"],
-      ifSearchFocus: false
+      titleList: ["时事", "时事", "时事", "时事", "时事", "时事", "时事"],
+      ifSearchFocus: false,
+      titleIndex: 0,
+      nowFirstIndex: 0,
+      titleScrollX: 0
+    },
+
+    switchTitleType(e) {
+      let index = e.currentTarget.dataset.index
+      let clickX = e.detail.x
+      let itemWidth = wx.getSystemInfoSync().windowWidth/5;
+      if (clickX < itemWidth) {
+        // 点击当前第一个标题
+        if (index > 0) {
+          // 当前标题非第一个标题
+          this.setData({ titleScrollX: itemWidth*(index-1) })
+        }
+      } else if (clickX > itemWidth*4) {
+        // 点击当前最后一个标题
+        if (index < this.data.titleList.length) {
+          // 当前标题非最后一个标题
+          this.setData({ titleScrollX: itemWidth*(index-3) })
+        }
+      }
+      this.setData({ titleIndex: index })
     },
 
     switchSearch() {

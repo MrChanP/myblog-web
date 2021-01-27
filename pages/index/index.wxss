@@ -18,53 +18,46 @@
 
 /* 首页 */
 .search_wrap {
-  width: 40%;
-  margin: 20rpx 30%;
-  height: 60rpx;
+  width: 20%;
+  margin-bottom: 10rpx;
+  margin-left: 40%;
+  height: 50rpx;
   border: 1px solid #999;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30rpx; 
+  border-radius: 25rpx; 
 }
 .search_img {
-  width: 50rpx;
-  height: 50rpx;
-  opacity: 0.7;
+  width: 35rpx;
+  height: 35rpx;
+  opacity: 0.5;
 }
 .search_wrap input {
-  width: 60%;
-  margin-left: 20rpx;
+  width: 70%;
+  margin-left: 15rpx;
+  font-size: 30rpx;
 }
 .search_focus {
   width: 70%;
-  margin: 20rpx 15%;
-  animation: search_focus 0.2s linear;
+  margin-left: 15%;
+  animation: search_focus 0.1s linear;
 }
 @keyframes search_focus {
-  0% {width: 40%; margin: 20rpx 30%;}
-  100% { width: 70%; margin: 20rpx 15%;}
+  0% {width: 20%; margin-left: 40%;}
+  100% { width: 70%; margin-left: 15%;}
 }
 .search_blur {
-  width: 40%;
-  margin: 20rpx 30%;
-  animation: search_blur 0.2s linear;
+  width: 20%;
+  margin-left: 40%;
+  animation: search_blur 0.1s linear;
 }
 @keyframes search_blur {
-  0% { width: 70%; margin: 20rpx 15%;}
-  100% { width: 40%; margin: 20rpx 30%;}
+  0% { width: 70%; margin-left: 15%;}
+  100% { width: 20%; margin-left: 40%;}
 }
 
-.top_wrap {
-  width: 100%;
-  height: 280rpx;
-}
-swiper, swiper-item, .top_bg_img {
-  width: 100%;
-  height: 100%;
-}
-
-.center_wrap {
+.title_wrap {
   width: 100%;
   height: 80rpx;
   background-color: #fff;
@@ -73,20 +66,29 @@ swiper, swiper-item, .top_bg_img {
 .title_scroll {
   width: 100%;
   height: 80rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  white-space:nowrap;
+  overflow:hidden;
 }
 .title_item {
-  width: 100rpx;
-  height: 75rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  width: 20%;
+  line-height: 75rpx;
   border-bottom: 5rpx solid #fff;
+  text-align: center;
 }
 .title_item_actice {
   border-bottom: 5rpx solid #333;
+}
+
+
+
+.img_swiper_wrap {
+  width: 100%;
+  height: 280rpx;
+}
+swiper, swiper-item, .swiper_img {
+  width: 100%;
+  height: 100%;
 }
 
 

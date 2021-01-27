@@ -5,25 +5,22 @@
 
   <!-- 首页 -->
   <view wx:if="{{nowTabar=='index'}}">
-    <view class="search_wrap {{ifSearchFocus?'search_focus':'search_blur'}}"> 
+    <!-- <view class="search_wrap {{ifSearchFocus?'search_focus':'search_blur'}}"> 
       <image class="search_img" src="{{imgPath}}/bgImg/search.png"></image>
-      <input type="text" placeholder="查询信息" bindfocus="switchSearch" bindblur="switchSearch"/>
-    </view>
-   <!-- <view class="top_wrap">
+      <input type="text" placeholder="{{ifSearchFocus?'请输入关键字':'搜索'}}" bindfocus="switchSearch" bindblur="switchSearch"/>
+    </view> -->
+   <view class="img_swiper_wrap">
     <swiper indicator-dots="{{true}}" indicator-color="rgba(255, 255, 255, 0.7)" circular="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
       <swiper-item wx:for="{{topBg}}" wx:key="index">
-        <image mode="aspectFill" class="top_bg_img" src="{{item.src}}"></image>
+        <image mode="aspectFill" class="swiper_img" src="{{item.src}}"></image>
       </swiper-item>
     </swiper>
-   </view> -->
-    <!-- <view class="center_wrap">
-      <scroll-view scroll-x="true" class="title_scroll">
-        <view wx:for="{{titleList}}" wx:key="index">{{item}}</view>
-        <view class="title_item title_item_actice">时事</view>
-        <view class="title_item">时事</view>
-        <view class="title_item">时事</view>
-      </scroll-view> -->
-    <!-- </view> -->
+   </view>
+    <view class="title_wrap">
+      <scroll-view scroll-x="true" class="title_scroll" scroll-left="{{titleScrollX}}" scroll-with-animation="{{true}}">
+        <view bindtap="switchTitleType" data-index="{{index}}" class="title_item {{titleIndex==index?'title_item_actice':''}}" wx:for="{{titleList}}" wx:key="index">{{item+index}}</view>
+      </scroll-view>
+    </view>
   </view>
 
   <!-- 消息 -->
