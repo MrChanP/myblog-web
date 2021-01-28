@@ -27,14 +27,9 @@
         <view class="news_detail_wrap" wx:for="{{nowNewsList}}" wx:key="index">
           <image class="news_title_img" src="{{imgPath}}/newsHeadImg/{{item.news_img}}"></image>
           <view class="news_detail">
-            <view class="detail_head">
-              <view class="news_title">{{item.news_head}}</view>
-             
-            </view>
-            <view class="detail_info">
-              aaaaaaaaaaaaaaaaa
-            </view>
-            <view>
+            <view class="detail_head">{{item.news_head}}</view>
+            <view class="detail_info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</view>
+            <view class="detail_bottom">
               <view class="news_time">{{item.news_time}}</view>
               <view class="auth_wrap">
                 <image class="auth_head_img" src="{{imgPath}}/headImg/{{item.head_url}}"></image>

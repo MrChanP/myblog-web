@@ -119,22 +119,43 @@ swiper, swiper-item, .swiper_img {
 }
 .news_detail {
   width: 400rpx;
+  height: 180rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  white-space: nowrap;
+}
+.news_detail>view {
+  height: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .detail_head {
+  width: 70%;
+  color: #333;
+  font-weight: bold;
+  font-size: 30rpx;
+  text-overflow: ellipsis;
+}
+.detail_info {
+  width: 90%;
+  height: 80rpx;
+  line-height: 40rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+.detail_bottom {
+  font-size: 28rpx;
+  color: #999;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.news_title {
-  color: #333;
-  font-weight: bold;
-  font-size: 30rpx;
+.news_time {
+  width: 60%;
+  white-space: nowrap;
 }
 
 .auth_head_img {
