@@ -18,7 +18,31 @@
    </view>
     <view class="title_wrap">
       <scroll-view scroll-x="true" class="title_scroll" scroll-left="{{titleScrollX}}" scroll-with-animation="{{true}}">
-        <view bindtap="switchTitleType" data-index="{{index}}" class="title_item {{titleIndex==index?'title_item_actice':''}}" wx:for="{{titleList}}" wx:key="index">{{item+index}}</view>
+        <view bindtap="switchTitleType" data-index="{{index}}" class="title_item {{titleIndex==index?'title_item_actice':''}}" wx:for="{{titleList}}" wx:key="index">{{item.newsTitle}}</view>
+      </scroll-view>
+    </view>
+
+    <view class="news_wrap">
+      <scroll-view scroll-y="true" class="news_scroll">
+        <view class="news_detail_wrap" wx:for="{{nowNewsList}}" wx:key="index">
+          <image class="news_title_img" src="{{imgPath}}/newsHeadImg/{{item.news_img}}"></image>
+          <view class="news_detail">
+            <view class="detail_head">
+              <view class="news_title">{{item.news_head}}</view>
+             
+            </view>
+            <view class="detail_info">
+              aaaaaaaaaaaaaaaaa
+            </view>
+            <view>
+              <view class="news_time">{{item.news_time}}</view>
+              <view class="auth_wrap">
+                <image class="auth_head_img" src="{{imgPath}}/headImg/{{item.head_url}}"></image>
+                <view class="auth_name">{{item.user_name}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
       </scroll-view>
     </view>
   </view>

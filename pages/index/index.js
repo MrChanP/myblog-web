@@ -7,19 +7,32 @@ Page({
      */
     data: {
       // imgPath: "http://47.116.65.132:80/bgImg",
-      imgPath: "http://localhost:80",
+      imgPath: "http://localhost:80/myblog",
       nowTabar: "index",
       alertType: "hide",
       alertMsg: "",
       showNoticToast: false,
-      topBg: [{src:"http://localhost:80/bgImg/gg1.jpeg"}, {src:"http://localhost:80/bgImg/gg2.jpeg"}, {src:"http://localhost:80/bgImg/gg3.jpeg"}],
-      titleList: ["时事", "时事", "时事", "时事", "时事", "时事", "时事"],
+      topBg: [{src:"http://localhost:80/myblog/bgImg/gg1.jpeg"}, {src:"http://localhost:80/myblog/bgImg/gg2.jpeg"}, {src:"http://localhost:80/myblog/bgImg/gg3.jpeg"}],
+      titleList: [{code:"", title:"热点"}, {code:"", title:"精选"}],
       ifSearchFocus: false,
       titleIndex: 0,
-      nowFirstIndex: 0,
-      titleScrollX: 0
+      titleScrollX: 0,
+      nowNewsList: []
     },
 
+    // 获取首页标题栏
+    getIndexTitle(){
+      let _this = this
+      app.postRequest("/news/findAllNewsTitle", {}, 
+      function(data) {
+        if (data.code == 0) {
+          _this.setData({ titleList: data.data })
+          _this.getNewsByNewsCode(data.data[0].newsCode)
+        }
+      })
+    },
+
+    // 切换标题
     switchTitleType(e) {
       let index = e.currentTarget.dataset.index
       let clickX = e.detail.x
@@ -37,16 +50,27 @@ Page({
           this.setData({ titleScrollX: itemWidth*(index-3) })
         }
       }
+      this.getNewsByNewsCode(this.data.titleList[index].newsCode)
       this.setData({ titleIndex: index })
     },
 
-    switchSearch() {
-      this.setData({ ifSearchFocus: !this.data.ifSearchFocus })
+    // 获取新闻内容
+    getNewsByNewsCode(newsCode) {
+      let _this = this
+      app.postRequest("/news/findNewsByNewsCode", 
+      {newsCode: newsCode}, 
+      function(data) {
+        if (data.code == 0) {
+          _this.setData({ nowNewsList: data.data })
+        }
+      })
     },
 
     test(e){
       app.alert(this, e.currentTarget.dataset.type, "数据加载中", 0)
     },
+
+
 
     confirmResult(e){
       if (e.currentTarget.dataset.type) {
@@ -98,6 +122,15 @@ Page({
         }
       })
     },
+    
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function () {
+      app.setNavpos(this)
+      this.getIndexTitle()
+    },
 
     // 获取socket链接
     getSocket(){
@@ -110,13 +143,6 @@ Page({
 
       }
 
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function () {
-      app.setNavpos(this)
     },
 
     /**
