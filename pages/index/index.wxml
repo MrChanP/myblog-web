@@ -25,15 +25,15 @@
     <view class="news_wrap">
       <scroll-view scroll-y="true" class="news_scroll">
         <view class="news_detail_wrap" wx:for="{{nowNewsList}}" wx:key="index">
-          <image class="news_title_img" src="{{imgPath}}/newsHeadImg/{{item.news_img}}"></image>
+          <image class="news_title_img" src="{{imgPath}}/newsHeadImg/{{item.newsImg}}"></image>
           <view class="news_detail">
-            <view class="detail_head">{{item.news_head}}</view>
+            <view class="detail_head">{{item.newsTitle}}</view>
             <view class="detail_info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</view>
             <view class="detail_bottom">
-              <view class="news_time">{{item.news_time}}</view>
+              <view class="news_time">{{item.newsTime}}</view>
               <view class="auth_wrap">
-                <image class="auth_head_img" src="{{imgPath}}/headImg/{{item.head_url}}"></image>
-                <view class="auth_name">{{item.user_name}}</view>
+                <image class="auth_head_img" src="{{imgPath}}/headImg/{{item.authHead}}"></image>
+                <view class="auth_name">{{item.authName}}</view>
               </view>
             </view>
           </view>

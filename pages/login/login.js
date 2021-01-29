@@ -6,7 +6,7 @@ Page({
    */
   data: {
     // imgPath: "http://47.116.65.132:80/bgImg",
-    imgPath: "http://localhost:80/bgImg",
+    imgPath: "http://localhost:80/myblog/bgImg",
     userName: "",
     pwd: "",
     showPwd: false,
