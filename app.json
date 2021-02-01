@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myArticle/myArticle",
     "pages/index/index",
     "pages/signUp/signUp",
     "pages/login/login",

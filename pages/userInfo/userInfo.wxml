@@ -8,7 +8,7 @@
   <view class="info_wrap" wx:if="{{nowWrap=='info'}}">
     <view class="info_detail">
       <text class="info_title">头像</text>
-      <image class="headImg" src="{{userInfo.headUrl==null?(imgPath + '/icon_login_out.png'):userInfo.headUrl}}" bindtap="uploadHeadImg"></image>
+      <image class="headImg" src="{{userInfo.headUrl==null?(imgPath + '/icon_login_out.png'):(imgPath + userInfo.headUrl)}}" bindtap="uploadHeadImg"></image>
     </view>
     <view class="info_detail">
       <text class="info_title">用户名</text>
