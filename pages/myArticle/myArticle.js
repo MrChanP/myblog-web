@@ -8,6 +8,14 @@ Page({
 
   },
 
+
+  onEditorReady() {
+    let that = this;
+    this.createSelectorQuery().select('#editor').context(function (res) {
+     that.editorCtx = res.context;
+    }).exec();
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/myArticle/myArticle",
     "pages/index/index",
     "pages/signUp/signUp",
     "pages/login/login",
     "pages/userInfo/userInfo",
     "pages/myResume/myResume",
+    "pages/myArticle/myArticle",
 
     "pages/template/template"
   ],
