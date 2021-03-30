@@ -6,6 +6,7 @@
     "pages/userInfo/userInfo",
     "pages/myResume/myResume",
     "pages/myArticle/myArticle",
+    "pages/newPage/newPage",
 
     "pages/template/template"
   ],
