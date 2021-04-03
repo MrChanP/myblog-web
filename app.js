@@ -5,10 +5,10 @@ App({
     userInfo: null,
 
     // dev
-    contextUrl: 'http://localhost:80/myblog',
+    // contextUrl: 'http://localhost:80/myblog',
 
     // proc
-    // contextUrl: 'http://47.116.65.132:80/myblog'
+    contextUrl: 'http://47.116.65.132:80/myblog'
   },
 
   // 弹窗
